@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Отношение: пользователь имеет много заказов
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }
