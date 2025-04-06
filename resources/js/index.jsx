@@ -10,6 +10,7 @@ function App() {
             <Header /> {/* 👈 вставляем сюда */}
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
             </Routes>
         </Router>
     );

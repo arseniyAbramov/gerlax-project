@@ -15,4 +15,9 @@ class GameController extends Controller
 
         return response()->json($games);
     }
+    public function show($id)
+    {
+    $game = Game::with('genre')->findOrFail($id);
+    return response()->json($game);
+    }
 }

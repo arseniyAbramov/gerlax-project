@@ -14,7 +14,7 @@ class GenreSeeder extends Seeder
      */
     public function run(): void
     {
-        $genres = ['Action', 'RPG', 'Strategy', 'Indie'];
+        $genres = ['Action', 'RPG', 'Спортивные', 'Гонки', 'Хорроры'];
 
         foreach ($genres as $name) {
             Genre::firstOrCreate(['name' => $name]);
