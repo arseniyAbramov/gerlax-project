@@ -1,0 +1,97 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #eee;
+}
+
+.header__left,
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.header__logo img {
+}
+
+.header__nav {
+    display: flex;
+    gap: 20px;
+}
+
+.header__link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.header__link:hover {
+    text-decoration: underline;
+}
+
+.header__search {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.header__input {
+    padding: 8px 32px 8px 12px; /* справа добавляем место под иконку */
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.header__icon--search {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    pointer-events: none; /* чтобы клик не ловила */
+}
+
+.header__icon:hover svg {
+    color: #666;
+    transition: color 0.2s ease;
+}
+
+/* Мобила: ≤ 768px */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        padding: 20px;
+    }
+
+    .header__left,
+    .header__right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .header__nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header__search {
+        width: 100%;
+    }
+
+    .header__input {
+        width: 100%;
+    }
+
+    .header__right {
+        align-items: stretch;
+    }
+
+    .header__icon {
+        margin-left: 0;
+    }
+}

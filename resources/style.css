@@ -1,0 +1,38 @@
+/* resources/css/style.css */
+
+* {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    color: black;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a,
+li,
+button {
+    text-decoration: none;
+    list-style: none;
+    background: none;
+}
+.link {
+    list-style: none;
+}
+
+.container {
+    max-width: 1430px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
