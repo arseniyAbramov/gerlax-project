@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 import "./BestGames.css";
 
 export default function BestGames() {
+    const { addToCart } = useCart();
     const [games, setGames] = useState([]);
     const navigate = useNavigate();
 
@@ -32,7 +34,10 @@ export default function BestGames() {
                         <p className="best-games__price">{game.price}₽</p>
                         <button
                             className="best-games__buy"
-                            onClick={() => navigate(`/checkout`)} // или `/buy/${game.id}`
+                            onClick={() => {
+                                addToCart(game);
+                                navigate("/cart");
+                            }}
                         >
                             Купить
                         </button>

@@ -1,0 +1,15 @@
+.checkout {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.checkout__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.checkout__desc {
+    font-size: 18px;
+    color: #666;
+}

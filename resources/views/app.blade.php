@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Gerlax Full App</title>
+    <title>Gerlax</title>
     @viteReactRefresh
     @vite(['resources/js/app.jsx'])
+    <!-- путь к твоему React -->
 </head>
 
 <body>
