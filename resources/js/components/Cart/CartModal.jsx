@@ -1,8 +1,38 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../../axios";
 import { useCart } from "../../context/CartContext";
 import "./CartModal.css";
 
 export default function CartModal({ onClose }) {
+    const navigate = useNavigate();
+
+    const handleCheckout = async () => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Вы не авторизованы!");
+            navigate("/login");
+            return;
+        }
+
+        if (cart.length === 0) {
+            alert("Корзина пуста");
+            return;
+        }
+
+        try {
+            const res = await axios.post("/orders", {
+                total_price: total,
+            });
+            console.log("✅ Заказ оформлен:", res.data);
+            alert("Заказ оформлен! 🎉");
+            onClose(); // закрываем модалку
+            navigate("/profile");
+        } catch (err) {
+            console.error("❌ Ошибка при оформлении заказа:", err);
+            alert("Ошибка при оформлении заказа.");
+        }
+    };
     const { cart, removeFromCart } = useCart();
 
     const total = cart.reduce((sum, game) => sum + Number(game.price), 0);
@@ -47,7 +77,10 @@ export default function CartModal({ onClose }) {
                             <span>{total}₽</span>
                         </div>
 
-                        <button className="cart-modal__checkout">
+                        <button
+                            className="cart-modal__checkout"
+                            onClick={handleCheckout}
+                        >
                             Оформить заказ
                         </button>
                     </>
