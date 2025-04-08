@@ -13,8 +13,8 @@ import GamePage from "./pages/Game/GamePage";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import HomePage from "./pages/Home/HomePage";
 import NewGamesPage from "./pages/NewGamesPage/NewGamesPage";
+import ProfilePage from "./pages/Profile/ProfilePage";
 import SearchPage from "./pages/SearchPage/SearchPage";
-
 // ...
 
 // import NewGamesPage from "./pages/NewGames/NewGamesPage";
@@ -53,6 +53,7 @@ function App() {
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
             </Routes>
         </Router>
     );

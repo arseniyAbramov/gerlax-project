@@ -1,7 +1,7 @@
 // pages/Auth/LoginPage.jsx
 // import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios"; // заменить
 import "./AuthPage.css";
 
@@ -17,7 +17,7 @@ export default function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("/api/login", form);
+            const res = await axios.post("/login", form);
             localStorage.setItem("token", res.data.token);
             navigate("/profile");
         } catch (err) {
@@ -46,6 +46,9 @@ export default function LoginPage() {
                 />
                 <button type="submit">Войти</button>
             </form>
+            <p className="auth-switch">
+                Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>
+            </p>
         </div>
     );
 }

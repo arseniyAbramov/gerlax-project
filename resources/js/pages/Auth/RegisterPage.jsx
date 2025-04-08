@@ -1,7 +1,7 @@
 // pages/Auth/RegisterPage.jsx
 // import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "../../axios"; // заменить
 import "./AuthPage.css";
 
@@ -17,7 +17,7 @@ export default function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("/api/register", form);
+            await axios.post("/register", form);
             navigate("/login");
         } catch (err) {
             setError(err.response?.data?.message || "Ошибка регистрации");
@@ -51,6 +51,9 @@ export default function RegisterPage() {
                 />
                 <button type="submit">Зарегистрироваться</button>
             </form>
+            <p className="auth-switch">
+                Уже есть аккаунт? <Link to="/login">Войти</Link>
+            </p>
         </div>
     );
 }

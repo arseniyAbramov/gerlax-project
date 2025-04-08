@@ -41,3 +41,19 @@
     margin-bottom: 10px;
     text-align: center;
 }
+
+.auth-switch {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.auth-switch a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
