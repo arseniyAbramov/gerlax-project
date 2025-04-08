@@ -1,14 +1,16 @@
-import { Heart, Search, User2 } from "lucide-react";
+// Header.jsx
+
+import { Heart, Search, ShoppingCart, User2 } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-export default function Header() {
+export default function Header({ onOpenCart }) {
     return (
         <header className="header">
             <div className="header__left">
                 <Link to="/" className="header__logo">
-                    <img src="/logo-mechta.svg" alt="logo" color="#000" />
+                    <img src="/logo-mechta.svg" alt="logo" />
                 </Link>
                 <nav className="header__nav">
                     <Link to="/" className="header__link">
@@ -41,6 +43,12 @@ export default function Header() {
                 <Link to="/profile" className="header__icon">
                     <User2 color="#000" />
                 </Link>
+                <button
+                    className="header__icon header__cart-button"
+                    onClick={onOpenCart}
+                >
+                    <ShoppingCart color="#000" />
+                </button>
             </div>
         </header>
     );

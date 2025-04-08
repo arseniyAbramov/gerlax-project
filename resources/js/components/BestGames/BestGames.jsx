@@ -1,21 +1,18 @@
+// BestGames.jsx
+
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import "./BestGames.css";
 
-export default function BestGames() {
+export default function BestGames({ onBuy }) {
     const { addToCart } = useCart();
     const [games, setGames] = useState([]);
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios
             .get("/api/games")
-            .then((res) => {
-                // Берём только первые 4
-                setGames(res.data.slice(0, 4));
-            })
+            .then((res) => setGames(res.data.slice(0, 4)))
             .catch((err) => console.error("Ошибка при загрузке игр:", err));
     }, []);
 
@@ -36,7 +33,7 @@ export default function BestGames() {
                             className="best-games__buy"
                             onClick={() => {
                                 addToCart(game);
-                                navigate("/cart");
+                                onBuy(); // 👉 открываем модалку
                             }}
                         >
                             Купить

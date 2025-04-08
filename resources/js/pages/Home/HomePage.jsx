@@ -1,15 +1,14 @@
 import React from "react";
 import BestGames from "../../components/BestGames/BestGames";
-import GameList from "../../components/GameList";
+
 import Hero from "../../components/Hero/Hero";
 
-export default function HomePage() {
+export default function HomePage({ onBuy }) {
     return (
-        <div style={{ padding: "2rem" }}>
-            <h1>Главная страница — Gerlax 🎮</h1>
+        <div>
+            {/* style={{ padding: "2rem" }} */}
             <Hero />
-            <BestGames />
-            <GameList />
+            <BestGames onBuy={onBuy} />
         </div>
     );
 }
