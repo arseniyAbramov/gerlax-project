@@ -1,9 +1,19 @@
 import { Heart, Search, ShoppingCart, User2 } from "lucide-react";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 
 export default function Header({ onOpenCart, onOpenFavorites }) {
+    const [query, setQuery] = useState("");
+    const navigate = useNavigate();
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (query.trim()) {
+            navigate(`/search?q=${encodeURIComponent(query.trim())}`);
+            setQuery(""); // очищаем инпут
+        }
+    };
     return (
         <header className="header">
             <div className="header__left">
@@ -24,17 +34,21 @@ export default function Header({ onOpenCart, onOpenFavorites }) {
             </div>
 
             <div className="header__right">
-                <div className="header__search">
+                <form onSubmit={handleSearch} className="header__search">
                     <input
                         type="text"
                         className="header__input"
                         placeholder="Поиск игр..."
+                        value={query}
+                        onChange={(e) => setQuery(e.target.value)}
                     />
-                    <Search
+                    <button
+                        type="submit"
                         className="header__icon header__icon--search"
-                        size={16}
-                    />
-                </div>
+                    >
+                        <Search size={16} />
+                    </button>
+                </form>
 
                 <button
                     className="header__icon"

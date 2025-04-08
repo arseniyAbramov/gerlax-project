@@ -11,6 +11,7 @@ import GamePage from "./pages/Game/GamePage";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import HomePage from "./pages/Home/HomePage";
 import NewGamesPage from "./pages/NewGamesPage/NewGamesPage";
+import SearchPage from "./pages/SearchPage/SearchPage";
 
 // ...
 
@@ -47,6 +48,7 @@ function App() {
                     element={<NewGamesPage onBuy={openCart} />}
                 />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/search" element={<SearchPage />} />
             </Routes>
         </Router>
     );
