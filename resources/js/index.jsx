@@ -1,10 +1,10 @@
-// index.jsx
-
-import React, { useState } from "react"; // 👈 ВОТ ЭТО ДОБАВЬ
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "../style.css";
+
 import CartModal from "./components/Cart/CartModal";
 import CartPage from "./components/Cart/CartPage";
+import FavoritesModal from "./components/Favorites/FavoritesModal";
 import Header from "./components/Header/Header";
 import GamePage from "./pages/Game/GamePage";
 import GenrePage from "./pages/GenrePage/GenrePage";
@@ -12,14 +12,20 @@ import HomePage from "./pages/Home/HomePage";
 
 function App() {
     const [isCartOpen, setCartOpen] = useState(false);
+    const [isFavOpen, setFavOpen] = useState(false);
 
     const openCart = () => setCartOpen(true);
     const closeCart = () => setCartOpen(false);
 
+    const openFav = () => setFavOpen(true);
+    const closeFav = () => setFavOpen(false);
+
     return (
         <Router>
-            <Header onOpenCart={openCart} />
+            <Header onOpenCart={openCart} onOpenFavorites={openFav} />
+
             {isCartOpen && <CartModal onClose={closeCart} />}
+            {isFavOpen && <FavoritesModal onClose={closeFav} />}
 
             <Routes>
                 <Route path="/" element={<HomePage onBuy={openCart} />} />

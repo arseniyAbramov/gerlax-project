@@ -1,11 +1,9 @@
-// Header.jsx
-
 import { Heart, Search, ShoppingCart, User2 } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-export default function Header({ onOpenCart }) {
+export default function Header({ onOpenCart, onOpenFavorites }) {
     return (
         <header className="header">
             <div className="header__left">
@@ -37,15 +35,23 @@ export default function Header({ onOpenCart }) {
                         size={16}
                     />
                 </div>
-                <Link to="/favorites" className="header__icon">
+
+                <button
+                    className="header__icon"
+                    onClick={onOpenFavorites}
+                    title="Избранное"
+                >
                     <Heart color="#000" />
-                </Link>
+                </button>
+
                 <Link to="/profile" className="header__icon">
                     <User2 color="#000" />
                 </Link>
+
                 <button
                     className="header__icon header__cart-button"
                     onClick={onOpenCart}
+                    title="Корзина"
                 >
                     <ShoppingCart color="#000" />
                 </button>
