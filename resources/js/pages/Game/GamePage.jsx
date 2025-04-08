@@ -1,8 +1,10 @@
-import axios from "axios";
+// pages/Game/GamePage.jsx
+
 import { Heart } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useParams } from "react-router-dom";
+import axios from "../../axios";
 import Footer from "../../components/Footer/Footer";
 import { useCart } from "../../context/CartContext";
 import { useFavorites } from "../../context/FavoritesContext";
@@ -17,17 +19,26 @@ export default function GamePage({ onBuy }) {
     const { toggleFavorite, favorites } = useFavorites();
 
     useEffect(() => {
-        axios.get(`/api/games/${id}`).then((res) => {
-            setGame(res.data);
+        axios
+            .get(`/games/${id}`)
+            .then((res) => {
+                console.log("🎯 Game data:", res.data);
+                setGame(res.data);
 
-            const genreSlug = res.data.genre?.slug;
-            if (genreSlug) {
-                axios.get(`/api/genres/${genreSlug}/games`).then((r) => {
-                    const filtered = r.data.filter((g) => g.id !== res.data.id);
-                    setRelatedGames(filtered.slice(0, 4));
-                });
-            }
-        });
+                const genreSlug = res.data.genre?.slug;
+                if (genreSlug) {
+                    axios.get(`/genres/${genreSlug}/games`).then((r) => {
+                        const filtered = Array.isArray(r.data)
+                            ? r.data.filter((g) => g.id !== res.data.id)
+                            : [];
+                        setRelatedGames(filtered.slice(0, 4));
+                    });
+                }
+            })
+            .catch((err) => {
+                console.error("❌ Ошибка при загрузке игры:", err);
+                setGame(null);
+            });
     }, [id]);
 
     if (!game) return <p>Загрузка...</p>;
@@ -81,22 +92,24 @@ export default function GamePage({ onBuy }) {
                     <p>{game.description || "Описание отсутствует."}</p>
                 </div>
 
-                <div className="game-page__related">
-                    <h2>Похожие игры</h2>
-                    <div className="game-page__related-list">
-                        {relatedGames.map((g) => (
-                            <Link
-                                key={g.id}
-                                to={`/game/${g.id}`}
-                                className="game-card"
-                            >
-                                <img src={g.poster} alt={g.title} />
-                                <h3>{g.title}</h3>
-                                <p>{g.price}₽</p>
-                            </Link>
-                        ))}
+                {relatedGames.length > 0 && (
+                    <div className="game-page__related">
+                        <h2>Похожие игры</h2>
+                        <div className="game-page__related-list">
+                            {relatedGames.map((g) => (
+                                <Link
+                                    key={g.id}
+                                    to={`/game/${g.id}`}
+                                    className="game-card"
+                                >
+                                    <img src={g.poster} alt={g.title} />
+                                    <h3>{g.title}</h3>
+                                    <p>{g.price}₽</p>
+                                </Link>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             <Footer />
         </>

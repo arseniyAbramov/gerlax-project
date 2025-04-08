@@ -1,7 +1,8 @@
 // pages/SearchPage/SearchPage.jsx
-import axios from "axios";
+// import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import axios from "../../axios"; // заменить
 import Footer from "../../components/Footer/Footer";
 import "./SearchPage.css";
 

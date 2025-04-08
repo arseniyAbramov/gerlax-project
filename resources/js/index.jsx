@@ -7,6 +7,8 @@ import CartPage from "./components/Cart/CartPage";
 import FavoritesModal from "./components/Favorites/FavoritesModal";
 import Header from "./components/Header/Header";
 import AboutPage from "./pages/About/AboutPage";
+import LoginPage from "./pages/Auth/LoginPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
 import GamePage from "./pages/Game/GamePage";
 import GenrePage from "./pages/GenrePage/GenrePage";
 import HomePage from "./pages/Home/HomePage";
@@ -49,6 +51,8 @@ function App() {
                 />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/search" element={<SearchPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/login" element={<LoginPage />} />
             </Routes>
         </Router>
     );
