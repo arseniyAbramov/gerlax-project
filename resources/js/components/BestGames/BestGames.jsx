@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import "./BestGames.css";
 
@@ -21,24 +22,34 @@ export default function BestGames({ onBuy }) {
             <h2 className="best-games__title">Лучшие игры</h2>
             <div className="best-games__list">
                 {games.map((game) => (
-                    <article className="best-games__card" key={game.id}>
-                        <img
-                            src={game.poster}
-                            alt={game.title}
-                            className="best-games__poster"
-                        />
-                        <h3 className="best-games__name">{game.title}</h3>
-                        <p className="best-games__price">{game.price}₽</p>
-                        <button
-                            className="best-games__buy"
-                            onClick={() => {
-                                addToCart(game);
-                                onBuy(); // 👉 открываем модалку
-                            }}
-                        >
-                            Купить
-                        </button>
-                    </article>
+                    <Link
+                        to={`/game/${game.id}`}
+                        key={game.id}
+                        className="best-games__card-link"
+                    >
+                        <article className="best-games__card">
+                            <img
+                                src={game.poster}
+                                alt={game.title}
+                                className="best-games__poster"
+                            />
+                            <h3 className="best-games__name">{game.title}</h3>
+                            <p className="best-games__price">{game.price}₽</p>
+
+                            {/* Кнопка с остановкой клика по родителю */}
+                            <button
+                                className="best-games__buy"
+                                onClick={(e) => {
+                                    e.preventDefault(); // ❗️не даём ссылке сработать
+                                    e.stopPropagation(); // ❗️останавливаем всплытие
+                                    addToCart(game);
+                                    onBuy(); // открываем модалку
+                                }}
+                            >
+                                Купить
+                            </button>
+                        </article>
+                    </Link>
                 ))}
             </div>
         </section>
