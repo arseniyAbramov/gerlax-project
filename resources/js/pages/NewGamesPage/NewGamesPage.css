@@ -1,0 +1,75 @@
+.new-games {
+    padding: 60px 40px;
+}
+
+.new-games__title {
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #111;
+}
+
+.new-games__list {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(4, 1fr); /* для десктопа */
+}
+
+.new-games__card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.new-games__card {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+}
+
+.new-games__card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.new-games__card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.new-games__card h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.new-games__card p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 12px;
+}
+
+.new-games__card button {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.new-games__card button:hover {
+    background: #333;
+}
+
+@media (max-width: 1024px) {
+    .new-games__list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

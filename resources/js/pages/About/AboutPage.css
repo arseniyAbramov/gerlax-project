@@ -1,0 +1,76 @@
+.about {
+    padding: 60px 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about__hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about__hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.about__hero p {
+    font-size: 18px;
+    color: #555;
+}
+
+.about__intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.about__intro img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.about__intro p {
+    font-size: 16px;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.about__features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.about__feature {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.about__feature h3 {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
+
+.about__contacts h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.about__contacts ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.about__contacts li {
+    margin-bottom: 10px;
+}
