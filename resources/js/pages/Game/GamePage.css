@@ -1,0 +1,40 @@
+.game {
+    display: flex;
+    gap: 40px;
+    padding: 2rem;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.game__poster {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.game__info {
+    max-width: 600px;
+}
+
+.game__title {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.game__genre,
+.game__price {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.game__description {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 16px;
+    color: #444;
+}
+
+.game__loading {
+    padding: 2rem;
+    font-size: 18px;
+}

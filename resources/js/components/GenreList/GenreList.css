@@ -1,0 +1,49 @@
+.genres {
+    padding: 2rem;
+}
+
+.genres__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+}
+
+.genres__list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    justify-content: space-between;
+}
+
+.genres__item {
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 30px 50px;
+    min-width: 140px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.genres__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.genres__icon {
+    margin-bottom: 10px;
+}
+
+.genres__name {
+    font-weight: 500;
+}

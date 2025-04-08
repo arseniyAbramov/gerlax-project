@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 use App\Models\Genre; // ← ОБЯЗАТЕЛЬНО
 
 class GenreSeeder extends Seeder
@@ -17,7 +18,10 @@ class GenreSeeder extends Seeder
         $genres = ['Action', 'RPG', 'Спортивные', 'Гонки', 'Хорроры'];
 
         foreach ($genres as $name) {
-            Genre::firstOrCreate(['name' => $name]);
+            Genre::updateOrCreate(
+                        ['name' => $name],
+                        ['slug' =>  Str::slug($name)]
+                    );   
         }
     }
 }

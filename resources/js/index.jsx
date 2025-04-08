@@ -6,6 +6,8 @@ import "../style.css";
 import CartModal from "./components/Cart/CartModal";
 import CartPage from "./components/Cart/CartPage";
 import Header from "./components/Header/Header";
+import GamePage from "./pages/Game/GamePage";
+import GenrePage from "./pages/GenrePage/GenrePage";
 import HomePage from "./pages/Home/HomePage";
 
 function App() {
@@ -20,9 +22,14 @@ function App() {
             {isCartOpen && <CartModal onClose={closeCart} />}
 
             <Routes>
-                {/* <Route path="/" element={<BestGames onBuy={openCart} />} /> */}
                 <Route path="/" element={<HomePage onBuy={openCart} />} />
                 <Route path="/cart" element={<CartPage />} />
+                <Route
+                    path="/genres/:slug"
+                    element={<GenrePage onBuy={openCart} />}
+                />
+                <Route path="/game/:id" element={<GamePage />} />
+                <Route path="/genres/:slug/game/:id" element={<GamePage />} />
             </Routes>
         </Router>
     );

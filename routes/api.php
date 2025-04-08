@@ -14,3 +14,5 @@ Route::get('/message', function () {
 Route::get('/games', [GameController::class, 'index']);       // список игр
 Route::get('/games/{id}', [GameController::class, 'show']);   // детальная страница игры
 Route::get('/genres', [GenreController::class, 'index']);  
+
+Route::get('/genres/{slug}/games', [GenreController::class, 'gamesByGenre']);
